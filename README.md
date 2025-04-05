@@ -60,12 +60,13 @@ Follow these steps to set up the AWS infrastructure for the first time:
   "Version": "2012-10-17",
   "Statement": [
     {
+      "Sid": "AllowCloudFrontAccess",
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity YOUR_OAI_ID"
+        "CanonicalUser": "e1128ada61f67f309ad0e4dad576f2a63f9f33d800fbf5a372cba994ffceef59f4599f163d8d2f253b867c4543741083"
       },
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
+      "Resource": "arn:aws:s3:::linkedinrescue-website/*"
     }
   ]
 }
