@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import {
   Navbar as MTNavbar,
@@ -18,13 +19,21 @@ import {
 
 
 export function Navbar() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const isBlogPage = pathname?.includes('/blog');
+  
+  // Handle client-side rendering
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <MTNavbar shadow={false} fullWidth className="border-0 bg-gray-100 sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between">
-      <Link href="/" passHref>
-        <Image
+        <Link href="/" passHref>
+          <Image
             key="1"
             alt="Linkedin Rescue Service"
             width={480}
@@ -33,16 +42,17 @@ export function Navbar() {
             className="w-40 opacity-75"
           />
         </Link>
-        <div className="hidden items-center gap-2 lg:flex">
-          <a href="https://buy.stripe.com/4gw01V4aqdAa3yUeUU" target="_blank" rel="noopener noreferrer">
-            <Button fullWidth color="blue" size="lg" className="mb-4">
+        
+        {mounted && !isBlogPage && (
+          <div className="hidden items-center gap-2 lg:flex">
+            <a href="https://buy.stripe.com/4gw01V4aqdAa3yUeUU" target="_blank" rel="noopener noreferrer">
+              <Button fullWidth color="blue" size="lg" className="mb-4">
                 Get Your Account Back Now
-            </Button>          
-          </a>
-        </div>
-      
+              </Button>          
+            </a>
+          </div>
+        )}
       </div>
-    
     </MTNavbar>
   );
 }

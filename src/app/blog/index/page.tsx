@@ -8,6 +8,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function BlogIndexPage() {
+  // Reset scroll position when page loads
+  if (typeof window !== 'undefined') {
+    // Using React.useEffect would be better, but this is a simpler approach
+    // that works for this specific component
+    window.scrollTo(0, 0);
+  }
+  
   return (
       <>
       <Navbar />

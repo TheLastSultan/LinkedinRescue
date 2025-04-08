@@ -17,6 +17,9 @@ export default function BlogPage() {
   const [currentPost, setCurrentPost] = useState(blogPosts[0]);
 
   useEffect(() => {
+    // Reset scroll position when page loads
+    window.scrollTo(0, 0);
+    
     // Find the current blog post based on pathname
     const slug = pathname.split('/').pop();
     const post = blogPosts.find(post => post.slug === slug) || blogPosts[0];

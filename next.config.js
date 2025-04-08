@@ -15,6 +15,10 @@ const nextConfig = {
     // Ignoring typescript errors to make build pass
     ignoreBuildErrors: true,
   },
+  // Add scroll restoration configuration
+  experimental: {
+    scrollRestoration: true
+  },
 };
 
 module.exports = nextConfig;
