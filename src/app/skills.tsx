@@ -11,7 +11,7 @@ import { SkillCard } from "@/components";
 const SKILLS = [
   {
     icon: RectangleGroupIcon,
-    title: "1. Submit Your Information and Payment",
+    title: "1. Submit Your Information",
     children:
       "Provide the necessary details about your LinkedIn account, and submit your payment securely.",
   },
