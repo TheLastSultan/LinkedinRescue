@@ -4,6 +4,14 @@ import React from "react";
 import { Typography, Card, CardBody, Button } from "@material-tailwind/react";
 
 export function Pricing() {
+  const handlePurchaseClick = () => {
+    // Google Ads conversion tracking
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-16980556164/zTk9CNDNvrYaEITz-qA_',
+      });
+    }
+  };
   return (
     <section className="px-8 py-24 bg-gray-50">
       <div className="container mx-auto">
@@ -71,7 +79,7 @@ export function Pricing() {
                 </ul>
               </div>
               
-              <a href="https://buy.stripe.com/4gw01V4aqdAa3yUeUU" target="_blank" rel="noopener noreferrer">
+              <a href="https://buy.stripe.com/4gw01V4aqdAa3yUeUU" target="_blank" rel="noopener noreferrer" onClick={handlePurchaseClick}>
                 <Button fullWidth color="blue" size="lg" className="mb-4">
                   Get Your Account Back Now
                 </Button>
